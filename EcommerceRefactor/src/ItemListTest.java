@@ -32,6 +32,20 @@ public class ItemListTest {
         assertEquals(0, productList.size());
         assertEquals(itemToAdd, productListBuy.get(0));
     }
+
+    @Test
+    public void testShoppingCartItemsPrice() {
+        ItemsList itemsList = new ItemsList();
+        Item item1 = new Item("Item 1", "10.00", "Category", "Size", "Color", "2023/10/01");
+        Item item2 = new Item("Item 2", "15.00", "Category", "Size", "Color", "2023/10/02");
+
+        itemsList.setAddItem(item1);
+        itemsList.setAddItem(item2);
+        itemsList.buyItem(0);
+        itemsList.buyItem(0);
+
+        double totalPrice = itemsList.shoppingCartItemsPrice();
+
+        assertEquals(25.00, totalPrice, 0.001);
+    }
 }
-
-
