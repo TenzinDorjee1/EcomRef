@@ -38,6 +38,14 @@ public class ItemTest {
         item.setDatePosted("2023/10/06");
         assertEquals("2023/10/06", item.getDatePosted());
     }
+
+    @Test
+    public void testToString() {
+        Item item = new Item("Test Item", "20.00", "Electronics", "Medium", "Red", "2023/10/05");
+
+        String expected = "name: Test Item, price: 20.00, category: Electronics, color: Red, date posted:2023/10/05";
+        assertEquals(expected, item.toString());
+    }
 }
 
 
