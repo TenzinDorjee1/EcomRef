@@ -15,4 +15,29 @@ public class ItemTest {
         assertEquals("Red", item.getColor());
         assertEquals("2023/10/05", item.getDatePosted());
     }
+
+    @Test
+    public void testSetters() {
+        Item item = new Item();
+
+        item.setName("Shirt");
+        assertEquals("Shirt", item.getName());
+
+        item.setPrice("15.00");
+        assertEquals("15.00", item.getPrice());
+
+        item.setCategory("Clothing");
+        assertEquals("Clothing", item.getCategory());
+
+        item.setSize("Large");
+        assertEquals("Large", item.getSize());
+
+        item.setColor("Blue");
+        assertEquals("Blue", item.getColor());
+
+        item.setDatePosted("2023/10/06");
+        assertEquals("2023/10/06", item.getDatePosted());
+    }
 }
+
+
