@@ -1,7 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class ItemTempTest {
+public class ItemHandlerTempTest {
 
     @Test
     public void testItemTempCreation() {
