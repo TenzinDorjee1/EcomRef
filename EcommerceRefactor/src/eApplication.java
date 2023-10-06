@@ -2,27 +2,21 @@ import java.util.Scanner;
 
 public class eApplication {
 
-	public Scanner scannerIn = new Scanner(System.in);
+	private Scanner scannerIn = new Scanner(System.in);
+	private ItemsList ecommProduct = new ItemsList();
 
-	private String name;
-	private String price;
-	private String category;
-	private String size;
-	private String color;
-	private String datePosted;
-	ItemsList ecommProduct = new ItemsList();
-
-	public String HomeOptions() {
+	public void HomeOptions() {
 		while (true) {
 			System.out.println("Welcome to our Ecommerce Application!");
-			Item ecommItem = new Item(name, price, category, size, color, datePosted);
 
-			System.out.println("Home Page: What would you like to do? type 'Sell' Item(s), 'Buy' Item(s), Go to 'Product Page',Go to 'Shopping cart, or Exit");
-			String homePageChoice = scannerIn.nextLine();
+			System.out.println("Home Page: What would you like to do? Type 'Sell' Item(s), 'Buy' Item(s), " +
+					"Go to 'Product Page', Go to 'Shopping Cart', or Exit");
 
-			switch (homePageChoice.toLowerCase()) {
+			String homePageChoice = scannerIn.nextLine().toLowerCase();
+
+			switch (homePageChoice) {
 				case "sell":
-					sellItem(ecommItem);
+					sellItem();
 					break;
 				case "buy":
 					buyProducts();
@@ -35,39 +29,41 @@ public class eApplication {
 					break;
 				case "exit":
 					System.exit(0);
-					break;
 				default:
 					System.out.println("Invalid Input");
 			}
 
-		
-			scannerIn.nextLine();
 
-			return homePageChoice;
+			scannerIn.nextLine();
 		}
 	}
 
-	private void sellItem(Item ecommItem) {
+	private void sellItem() {
 		System.out.println("SELL ITEM:");
 		System.out.println("---------------------");
 
+
 		System.out.println("What is the name of the item?");
-		ecommItem.setName(scannerIn.nextLine());
+		String name = scannerIn.nextLine();
 
 		System.out.println("What is the price of the item?");
-		ecommItem.setPrice(scannerIn.nextLine());
+		String price = scannerIn.nextLine();
 
 		System.out.println("What is the category of the item?");
-		ecommItem.setCategory(scannerIn.nextLine());
+		String category = scannerIn.nextLine();
 
-		System.out.println("what is the size of the item (XS,S,M,L,XL or N/A)");
-		ecommItem.setSize(scannerIn.nextLine());
+		System.out.println("What is the size of the item (XS, S, M, L, XL, or N/A)");
+		String size = scannerIn.nextLine();
 
-		System.out.println("what is the color of the item");
-		ecommItem.setColor(scannerIn.nextLine());
+		System.out.println("What is the color of the item");
+		String color = scannerIn.nextLine();
 
-		System.out.println("what is the date posted of the item (ex.2021/07/23)");
-		ecommItem.setDatePosted(scannerIn.nextLine());
+		System.out.println("What is the date posted of the item (e.g., 2021/07/23)");
+		String datePosted = scannerIn.nextLine();
+
+
+		ItemTemp ecommItem = new ItemTemp(name, price, category, size, color, datePosted);
+
 
 		ecommProduct.setAddItem(ecommItem);
 	}

@@ -1,33 +1,28 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import org.junit.Test;
-
-public class ItemsList  {
-	public Item aItem;
-	//public Scanner scannerIn = new Scanner(System.in);
-	ArrayList<Item> productList = new ArrayList<Item>();
-	ArrayList<Item> productListBuy = new ArrayList<Item>();
+public class ItemsList {
+	private ItemTemp anItem;
+	ArrayList<ItemTemp> productList = new ArrayList<>();
+	ArrayList<ItemTemp> productListBuy = new ArrayList<>();
 
 	public ItemsList() {
 
-	}	
-	public Item getItemsList() {
-		return aItem;
-	}
-	public void setItemsList(Item aItem) {
-		this.aItem = aItem;
 	}
 
+	public ItemTemp getItemsList() {
+		return anItem;
+	}
 
-	public void setAddItem(Item itemToAdd) {
-		aItem = itemToAdd;
+	public void setItemsList(ItemTemp anItem) {
+		this.anItem = anItem;
+	}
+
+	public void setAddItem(ItemTemp itemToAdd) {
+		anItem = itemToAdd;
 		productList.add(getItemsList());
-
-
 	}
 
-	public ArrayList<Item> getAddItem(){
+	public ArrayList<ItemTemp> getAddItem() {
 		System.out.println(productList);
 		return productList;
 	}
@@ -35,39 +30,42 @@ public class ItemsList  {
 	public void displayItem() {
 		for (int i = 0; i < productList.size(); i++) {
 			System.out.println("Product: " + i);
-			System.out.println(productList.get(i));
+			ItemTemp currentItem = productList.get(i);
 
+			System.out.println("Name: " + currentItem.getName());
+			System.out.println("Price: " + currentItem.getPrice());
+			System.out.println("Category: " + currentItem.getCategory());
+			System.out.println("Size: " + currentItem.getSize());
+			System.out.println("Color: " + currentItem.getColor());
+			System.out.println("Date Posted: " + currentItem.getDatePosted());
+
+			System.out.println();
 		}
 	}
 
-	public void buyItem(int ItemToBuy) {
-		productListBuy.add(productList.get(ItemToBuy));
-		productList.remove(ItemToBuy);
 
-
+	public void buyItem(int itemToBuy) {
+		productListBuy.add(productList.get(itemToBuy));
+		productList.remove(itemToBuy);
 	}
 
 	public void shoppingCartItems() {
-		for (int i = 0; i < productListBuy.size(); i++){
+		for (int i = 0; i < productListBuy.size(); i++) {
 			System.out.println(productListBuy.get(i));
-
 		}
 	}
 
 	public double shoppingCartItemsPrice() {
 		double totalSum = 0;
-		for (int i = 0; i < productListBuy.size(); i++){
+		for (int i = 0; i < productListBuy.size(); i++) {
 			double sum = Double.parseDouble(productListBuy.get(i).getPrice());
 			totalSum = totalSum + sum;
-
 		}
 		return totalSum;
-		
 	}
 
+
 }
-
-
 
 
 
