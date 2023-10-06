@@ -1,7 +1,7 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class HomePage {
+public class eApplication {
+
 
 	public Scanner scannerIn = new Scanner(System.in);
 
@@ -17,6 +17,7 @@ public class HomePage {
 
 	public String HomeOptions(){
 		while(true) {
+			System.out.println("Welcome to our Ecommerce Application!");
 			Item ecommItem = new Item(name, price, category, size, color, datePosted);
 
 			System.out.println("Home Page: What would you like to do? type 'Sell' Item(s), 'Buy' Item(s), Go to 'Product Page',Go to 'Shopping cart, or Exit");
@@ -105,6 +106,12 @@ public class HomePage {
 			}
 			return homePageChoice;
 		}
+	}
+
+
+	public static void main(String[] args) {
+		eApplication homePage = new eApplication();
+		homePage.HomeOptions();
 	}
 }
 	
