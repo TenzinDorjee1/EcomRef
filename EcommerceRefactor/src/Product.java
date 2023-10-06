@@ -55,6 +55,6 @@ public class Product {
         itemDetails.setDatePosted(datePosted);
     }
 
-    // Additional methods specific to the Item class
+
 }
 
