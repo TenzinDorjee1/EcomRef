@@ -15,7 +15,7 @@ public class ItemTemp {
         this.color = color;
         this.datePosted = datePosted;
     }
-    
+
 
     public String getName() {
         return name;
