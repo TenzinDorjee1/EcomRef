@@ -13,10 +13,6 @@ public class ItemsList {
 		return anItem;
 	}
 
-	public void setItemsList(ItemTemp anItem) {
-		this.anItem = anItem;
-	}
-
 	public void setAddItem(ItemTemp itemToAdd) {
 		anItem = itemToAdd;
 		productList.add(getItemsList());
