@@ -1,4 +1,6 @@
 import java.util.Scanner;
+//Tenzin Dorjee
+//30047589
 
 public class eApplication {
 
