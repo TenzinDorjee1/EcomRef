@@ -62,7 +62,7 @@ public class eApplication {
 		String datePosted = scannerIn.nextLine();
 
 
-		ItemTemp ecommItem = new ItemTemp(name, price, category, size, color, datePosted);
+		ItemHandler ecommItem = new ItemHandler(name, price, category, size, color, datePosted);
 
 
 		ecommProduct.setAddItem(ecommItem);

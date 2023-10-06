@@ -1,51 +1,77 @@
-//import org.junit.Test;
-//import static org.junit.Assert.*;
-//
-//import java.util.ArrayList;
-//
-//public class ItemListTest {
-//
-//    @Test
-//    public void testAddItem() {
-//        ItemsList itemsList = new ItemsList();
-//        Item itemToAdd = new Item("Test Item", "20.00", "Electronics", "Medium", "Red", "2023/10/05");
-//
-//        itemsList.setAddItem(itemToAdd);
-//        ArrayList<ItemTemp> productList = itemsList.getAddItem();
-//
-//        assertEquals(1, productList.size());
-//        assertEquals(itemToAdd, productList.get(0));
-//    }
-//
-//    @Test
-//    public void testBuyItem() {
-//        ItemsList itemsList = new ItemsList();
-//        Item itemToAdd = new Item("Test Item", "20.00", "Electronics", "Medium", "Red", "2023/10/05");
-//
-//        itemsList.setAddItem(itemToAdd);
-//        itemsList.buyItem(0);
-//
-//        ArrayList<Item> productListBuy = new ArrayList<>(itemsList.productListBuy);
-//        ArrayList<Item> productList = new ArrayList<>(itemsList.productList);
-//
-//        assertEquals(1, productListBuy.size());
-//        assertEquals(0, productList.size());
-//        assertEquals(itemToAdd, productListBuy.get(0));
-//    }
-//
-//    @Test
-//    public void testShoppingCartItemsPrice() {
-//        ItemsList itemsList = new ItemsList();
-//        Item item1 = new Item("Item 1", "10.00", "Category", "Size", "Color", "2023/10/01");
-//        Item item2 = new Item("Item 2", "15.00", "Category", "Size", "Color", "2023/10/02");
-//
-//        itemsList.setAddItem(item1);
-//        itemsList.setAddItem(item2);
-//        itemsList.buyItem(0);
-//        itemsList.buyItem(0);
-//
-//        double totalPrice = itemsList.shoppingCartItemsPrice();
-//
-//        assertEquals(25.00, totalPrice, 0.001);
-//    }
-//}
+import static org.junit.Assert.*;
+import org.junit.Test;
+import java.util.ArrayList;
+
+public class ItemListTest {
+
+    @Test
+    public void testAddItem() {
+        ItemsList itemsList = new ItemsList();
+        ItemHandler item = new ItemHandler("TestItem", "20.0", "Electronics", "M", "Black", "2022/01/01");
+
+        itemsList.setAddItem(item);
+
+        assertEquals(1, itemsList.productList.size());
+        assertEquals(item, itemsList.productList.get(0));
+    }
+
+    @Test
+    public void testDisplayItem() {
+        ItemsList itemsList = new ItemsList();
+        ItemHandler item1 = new ItemHandler("Item1", "10.0", "Clothing", "S", "Red", "2022/02/01");
+        ItemHandler item2 = new ItemHandler("Item2", "15.0", "Electronics", "L", "Blue", "2022/02/15");
+
+        itemsList.setAddItem(item1);
+        itemsList.setAddItem(item2);
+
+        // Redirect standard output for testing
+        final ArrayList<String> printedLines = new ArrayList<>();
+        System.setOut(new java.io.PrintStream(
+                new java.io.OutputStream() {
+                    @Override
+                    public void write(int b) {
+                        printedLines.add(String.valueOf((char) b));
+                    }
+                }));
+
+        itemsList.displayItem();
+
+        // Reset standard output
+        System.setOut(System.out);
+
+        assertEquals("Product: 0\nName: Item1\nPrice: 10.0\nCategory: Clothing\nSize: S\nColor: Red\nDate Posted: 2022/02/01\n\n" +
+                        "Product: 1\nName: Item2\nPrice: 15.0\nCategory: Electronics\nSize: L\nColor: Blue\nDate Posted: 2022/02/15\n\n",
+                String.join("", printedLines));
+    }
+
+    @Test
+    public void testBuyItem() {
+        ItemsList itemsList = new ItemsList();
+        ItemHandler item1 = new ItemHandler("Item1", "10.0", "Clothing", "S", "Red", "2022/02/01");
+        ItemHandler item2 = new ItemHandler("Item2", "15.0", "Electronics", "L", "Blue", "2022/02/15");
+
+        itemsList.setAddItem(item1);
+        itemsList.setAddItem(item2);
+
+        itemsList.buyItem(1);
+
+        assertEquals(1, itemsList.productList.size());
+        assertEquals(1, itemsList.productListBuy.size());
+        assertEquals(item2, itemsList.productListBuy.get(0));
+    }
+
+    @Test
+    public void testShoppingCartItemsPrice() {
+        ItemsList itemsList = new ItemsList();
+        ItemHandler item1 = new ItemHandler("Item1", "10.0", "Clothing", "S", "Red", "2022/02/01");
+
+        itemsList.setAddItem(item1);
+
+
+        itemsList.buyItem(0);
+
+
+        assertEquals(10.0, itemsList.shoppingCartItemsPrice(), 0.001);
+    }
+}
+

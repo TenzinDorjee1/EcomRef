@@ -1,7 +1,7 @@
 public class Product {
-    private ItemTemp itemDetails;
+    private ItemHandler itemDetails;
 
-    public Product(ItemTemp itemDetails) {
+    public Product(ItemHandler itemDetails) {
         this.itemDetails = itemDetails;
     }
 

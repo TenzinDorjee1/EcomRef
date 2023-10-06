@@ -1,24 +1,24 @@
 import java.util.ArrayList;
 
 public class ItemsList {
-	private ItemTemp anItem;
-	ArrayList<ItemTemp> productList = new ArrayList<>();
-	ArrayList<ItemTemp> productListBuy = new ArrayList<>();
+	private ItemHandler anItem;
+	ArrayList<ItemHandler> productList = new ArrayList<>();
+	ArrayList<ItemHandler> productListBuy = new ArrayList<>();
 
 	public ItemsList() {
 
 	}
 
-	public ItemTemp getItemsList() {
+	public ItemHandler getItemsList() {
 		return anItem;
 	}
 
-	public void setAddItem(ItemTemp itemToAdd) {
+	public void setAddItem(ItemHandler itemToAdd) {
 		anItem = itemToAdd;
 		productList.add(getItemsList());
 	}
 
-	public ArrayList<ItemTemp> getAddItem() {
+	public ArrayList<ItemHandler> getAddItem() {
 		System.out.println(productList);
 		return productList;
 	}
@@ -26,7 +26,7 @@ public class ItemsList {
 	public void displayItem() {
 		for (int i = 0; i < productList.size(); i++) {
 			System.out.println("Product: " + i);
-			ItemTemp currentItem = productList.get(i);
+			ItemHandler currentItem = productList.get(i);
 
 			System.out.println("Name: " + currentItem.getName());
 			System.out.println("Price: " + currentItem.getPrice());

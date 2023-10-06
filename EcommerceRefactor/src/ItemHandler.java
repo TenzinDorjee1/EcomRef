@@ -1,4 +1,4 @@
-public class ItemTemp {
+public class ItemHandler {
     public String name;
     public String price;
     public String category;
@@ -7,7 +7,7 @@ public class ItemTemp {
     public String datePosted;
 
 
-    public ItemTemp(String name, String price, String category, String size, String color, String datePosted) {
+    public ItemHandler(String name, String price, String category, String size, String color, String datePosted) {
         this.name = name;
         this.price = price;
         this.category = category;
@@ -63,6 +63,11 @@ public class ItemTemp {
 
     public void setDatePosted(String datePosted) {
         this.datePosted = datePosted;
+    }
+    public String toString() {
+
+        return "name: " + getName() + ", price: " + getPrice() + ", category: " + getCategory() + ", color: " + getColor()
+                + ", date posted:" + getDatePosted();
     }
 }
 

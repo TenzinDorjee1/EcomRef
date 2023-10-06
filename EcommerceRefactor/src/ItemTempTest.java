@@ -14,7 +14,7 @@ public class ItemTempTest {
         String datePosted = "2023/10/06";
 
 
-        ItemTemp itemTemp = new ItemTemp(name, price, category, size, color, datePosted);
+        ItemHandler itemTemp = new ItemHandler(name, price, category, size, color, datePosted);
 
 
         assertEquals(name, itemTemp.getName());
@@ -28,7 +28,7 @@ public class ItemTempTest {
     @Test
     public void testSetName() {
 
-        ItemTemp itemTemp = new ItemTemp("Shirt", "19.99", "Apparel", "M", "Blue", "2023/10/06");
+        ItemHandler itemTemp = new ItemHandler("Shirt", "19.99", "Apparel", "M", "Blue", "2023/10/06");
 
 
         itemTemp.setName("New Shirt");
@@ -40,7 +40,7 @@ public class ItemTempTest {
     @Test
     public void testSetPrice() {
 
-        ItemTemp itemTemp = new ItemTemp("Shirt", "19.99", "Apparel", "M", "Blue", "2023/10/06");
+        ItemHandler itemTemp = new ItemHandler("Shirt", "19.99", "Apparel", "M", "Blue", "2023/10/06");
 
 
         itemTemp.setPrice("25.00");
